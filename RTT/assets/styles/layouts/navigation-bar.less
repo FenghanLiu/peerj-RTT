@@ -1,0 +1,47 @@
+.navbar-brand {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.dropdown-item {
+    font-size: 14px;
+}
+
+.navbar {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.dropdown-item:active {
+    background-color: #f8f9fa !important;
+    color: #444444;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu a::after {
+    transform: rotate(-90deg);
+    position: absolute;
+    right: 6px;
+    top: .8em;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 14px;
+    }
+
+    .nav-link, .dropdown-item {
+        font-size: 12px;
+    }
+}

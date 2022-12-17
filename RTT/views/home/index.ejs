@@ -1,0 +1,81 @@
+<% include ../layouts/navigation-bar %>
+
+<main class="container general-container">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <div class="row align-items-center margin-first">
+                <div class="col-md-12 col-lg-6">
+                    <h5 class="home-title">Residents’ Travel Trajectories <span class="blue-word">Data Platform</span></h5>
+                    <hr>
+                    <p class="home-paragraph">Welcome to the urban residents' travel track data platform. The complete urban residents' travel track data will be encrypted by RSA algorithm and stored in IPFS. Relevant epidemic prevention departments can download the data through their private keys. The system is based on Hyperledger Fabric and IPFS to store data. The use of blockchain technology aims to ensure the safe transmission and storage of data without malicious tampering. IPFS optimizes the blockchain storage space and ensures the security of data under the chain</p>
+                    <!-- <p class="home-paragraph">The Airmed Foundation is an <span class="font-weight-bold">open source initiative</span> working under the AGPL-3.0 License. We provide a <span class="font-weight-bold">secure channel to store and transfer medical records</span>. We do this through the <span class="font-weight-bold">Interplanetary File System (IPFS)</span> and <span class="font-weight-bold">Hyperledger Fabric</span>. The conjunction of these technologies guarantees the immutability and availability of the data. We replicate all records through the IPFS network, using the <span class="font-weight-bold">Bittorrent</span> protocol. We achieve secure access to files through <span class="font-weight-bold">asymmetric cryptography</span>. We protect and store access keys in the Hyperledger Fabric <span class="font-weight-bold">blockchain</span>.</p> -->
+                </div>
+                <div class="col-md-12 col-lg-6 justify-content-center">
+                    <div class="text-center">
+                        <a href="https://www.hyperledger.org/" target="_blank"><img src="images/home/hyperledger.png" id="hyperleger-logo"/></a>
+                        <a href="https://ipfs.io/" target="_blank"><img src="images/home/ipfs.png" id="ipfs-logo"/></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center margin-top-section">
+                <div class="col-md-12 col-lg-6">
+                    <h5 class="home-title">How does the system work?</h5>
+                    <hr>
+                    <p class="home-paragraph">
+                        The following is a brief introduction:
+                    </p>
+                    <p class="home-paragraph">
+                        The first is to generate a pair <span class="font-weight-bold">asymmetric key (public key and private key)</span> It is used as the identification of system users, encrypts and sends corresponding data with the public key of the relevant department that needs to view information, and views the received data in the option of viewing resident trajectory data in the tool. The data can be downloaded through the private key of the user, and the browser in the tool can be used for browsing and accessing.
+                    </p>
+                    <h6 class="home-title">Example:</h6>
+                    <ul>
+                        <li class="guide-number">
+                            <p class="guide-paragraph">Click Tool-Key Pair Establishment Tool to generate public and private key pairs</p>
+                            <!-- <p class="p-word-break guide-paragraph"><span class="font-weight-bold">Private KeyPublic Key</span></p> -->
+                        </li>
+                        <li class="guide-number">
+                            <p class="guide-paragraph">Click Tool - Data Sending tool - Fill in the public key of the relevant department - send the track information of the resident that the corresponding department wants to view</p>
+                        </li>
+                        <li class="guide-number">
+                            <p class="guide-paragraph">Click Tool - Data Search Tool - Fill in your private key - search and view the resident data you want to view</p>
+                        </li>
+                        <li class="guide-number">
+                            <p class="guide-paragraph">Click Tool - Data Download Tool - Fill in your private key - download the corresponding track data</p>
+                            <!-- <p class="p-word-break guide-paragraph"><a href="https://gateway.ipfs.io/ipfs/QmNdWbbe3jsHUUYZwq2w9eCkHD1JefV1oM7m4DkSJF4wzp" target="_blank">https://gateway.ipfs.io/ipfs/QmNdWbbe3jsHUUYZwq2w9eCkHD1JefV1oM7m4DkSJF4wzp</a></p> -->
+                        </li>
+                    </ul>
+                    <!-- <p class="home-paragraph">
+                        The second and more private way is using <span class="font-weight-bold">asymmetric encryption</span>. This stores keys in <span class="font-weight-bold">Hyperledger Fabric’s blockchain</span> and allows <span class="font-weight-bold">restricting access to specific entities</span>. For this process, we have created this <a href="/tutorial" target="_blank">tutorial</a>.
+                    </p> -->
+                </div>
+                <div class="col-md-12 col-lg-6 justify-content-center">
+                    <div class="text-center">
+                        <!-- <img width="200px" src="images/home/xtjg.png" id="guide-logo"/> -->
+                        <!-- <img width="200px" src="images/home/xtjg.png"/> -->
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row align-items-center margin-top-section margin-bottom-section">
+                <div class="col-md-12 col-lg-6">
+                    <h5 class="home-title">Where can I find the source code?</h5>
+                    <hr>
+                    <div class="home-title">
+                        <a class="git-title home-paragraph" href="https://github.com/the-chain/airmedfoundation-terminal" target="_blank"> Airmed Foundation is a open source project on GitHub.</a>
+                    </div>
+                    <div class="home-title">
+                        <iframe src="https://ghbtns.com/github-btn.html?user=the-chain&repo=airmedfoundation-terminal&type=fork&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                        <iframe src="https://ghbtns.com/github-btn.html?user=the-chain&repo=airmedfoundation-terminal&type=star&count=true" frameborder="0" scrolling="0" width="120px" height="20px"></iframe>
+                        <iframe src="https://ghbtns.com/github-btn.html?user=the-chain&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-6 justify-content-center">
+                    <div class="text-center">
+                        <a href="https://github.com/the-chain/airmedfoundation-terminal" target="_blank"><img src="images/home/Github.png" id="github-logo"/></a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include ../layouts/footer %>

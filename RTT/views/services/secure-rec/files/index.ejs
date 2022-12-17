@@ -1,0 +1,222 @@
+<% include ../layouts/navigation-bar-dashboard %>
+
+<main class="container general-container">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <% include ../../../layouts/flash-message %>
+            <% include ../../../layouts/wait %>
+            <h5 class="detail-title">
+                Files
+            </h5>
+            <div id="sr-files-card" class="card explorer-detail tabs-card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="sr-files-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="sr-sent-tab" data-toggle="tab" href="#sr-sent-table" role="tab" aria-controls="sr-sent-table" aria-selected="true">Hash Sent</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="sr-received-tab" data-toggle="tab" href="#sr-received-table" role="tab" aria-controls="sr-received-table" aria-selected="false">Hash Received</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content" id="sr-hash-tables">
+                    <div class="tab-pane fade show active hash-table-div" id="sr-sent-table" role="tabpanel" aria-labelledby="sr-sent-tab">
+                        <table id="sr-hash-sent" class="table hash-table dt-responsive" style="width:100%;">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Note</th>
+                                    <th>Hash</th>
+                                    <th>NoteId</th>
+                                    <th>Doctors</th>
+                                    <th>Insurances</th>
+                                    <th>Providers</th>
+                                    <th>Patient</th>
+                                    <th>View Info</th>
+                                    <th>Edit Note</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% userSender.hashSent.forEach(function(element)  { %>
+                                    <tr>
+                                        <td><%= element.description %></td>
+                                        <td><%= element.notes %></td>
+                                        <td><%= element.fileHash %></td>
+                                        <td><%= element.noteId %></td>
+                                        <td>
+                                            <% if(element.doctors && element.doctors.length > 0) { %>
+                                                <% element.doctors.forEach(function(doctor)  { %>
+                                                    <%= doctor + ', ' %>
+                                                <% }); %>
+                                            <% }else{ %>
+                                                N/A
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <% if(element.insurances && element.insurances.length > 0) { %>
+                                                <% element.insurances.forEach(function(insurance)  { %>
+                                                    <%= insurance + ', ' %>
+                                                <% }); %>
+                                            <% }else{ %>
+                                                N/A
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <% if(element.providers && element.providers.length > 0) { %>
+                                                <% element.providers.forEach(function(provider)  { %>
+                                                    <%= provider + ', ' %>
+                                                <% }); %>
+                                            <% }else{ %>
+                                                N/A
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <% if(element.patient) { %>
+                                                <%= element.patient %>
+                                            <% }else{ %>
+                                                N/A
+                                            <% } %>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <% }); %> 
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade hash-table-div" id="sr-received-table" role="tabpanel" aria-labelledby="sr-received-tab">
+                        <table id="sr-hash-received" class="table hash-table dt-responsive" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>From Email</th>
+                                    <th>From Type</th>
+                                    <th>Description</th>
+                                    <th>Hash</th>
+                                    <th>View Info</th>
+                                    <th>Download</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% userSender.hashReceived.forEach(function(element)  { %>
+                                    <tr>
+                                        <td><%= element.from.emailAddress %></td>
+                                        <td><%= element.from.type.toUpperCase() %></td>
+                                        <td><%= element.description %></td>
+                                        <td><%= element.fileHash %></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                <% }); %> 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-keys" id="modal-sr-viewed-received" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hash Received</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group margin-custom-radio">
+                                <label class="service-form-label" for="hash-received">Hash</label>
+                                <input class="form-control modal-inputs-dis" type="text" id="sr-hash-received-row" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="service-form-label" for="from-email">From email</label>
+                                <input class="form-control modal-inputs-dis" type="text" id="sr-from-email" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="service-form-label" for="from-type">From type</label>
+                                <input class="form-control modal-inputs-dis" type="text" id="sr-from-type" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="service-form-label" for="description">Description</label>
+                                <textarea class="form-control textarea-keys modal-inputs-dis" rows="5" id="sr-received-description" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-keys" id="modal-sr-viewed-sent" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hash Sent</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group margin-custom-radio">
+                                <label class="service-form-label" for="hash-sent">Hash</label>
+                                <input class="form-control modal-inputs-dis" type="text" id="sr-hash-sent-row" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label class="service-form-label" for="to">To</label>
+                                <div class="to-div noselect modal-inputs-dis textarea-keys" id="sr-to"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="service-form-label" for="description">Description</label>
+                                <textarea class="form-control textarea-keys modal-inputs-dis" rows="5" id="sr-description" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="service-form-label" for="note">Note</label>
+                                <textarea class="form-control textarea-keys modal-inputs-dis" rows="5" id="sr-note" disabled></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-keys" id="modal-sr-edit-sent" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Hash Sent</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-secure-rec-edit-note">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group margin-custom-radio">
+                                    <label class="service-form-label" for="hash-sent">Hash</label>
+                                    <input class="form-control modal-inputs-dis" type="text" id="sr-hash-sent-row-edit" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label class="service-form-label" for="note">Note</label>
+                                    <textarea class="form-control textarea-keys modal-inputs-dis" rows="5" name="notes" id="sr-note-edit"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row mt-4 mb-5">
+                        <div class="col-4 offset-8">
+                            <button id="edit-note-btn" type="button" class="btn btn-primary btn-block">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include ../../../layouts/footer %>

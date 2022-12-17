@@ -1,0 +1,153 @@
+<% include ../layouts/navigation-bar %>
+
+<main class="container general-container">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <% include ./header %>
+            <div class="row">
+                <div class="col-12 col-lg-5">
+                    <div class="explorer-index card">
+                        <div class="card-header">
+                            Trajectory data delivery system <small>Beta</small>                                
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p class="explorer-p">Latest block</p>
+                                    <% if(blocksInfo.length > 0) { %>
+                                        <p id="last-block-n" class="explorer-info-text font-weight-bold"><%= blocksInfo[0].id - 1 %></p>
+                                    <% }else{ %>
+                                        <p id="last-block-n" class="explorer-info-text font-weight-bold">N/A</p>
+                                    <% } %>
+                                </div>
+                                <div class="col-6">
+                                    <p class="explorer-p text-right">Transaction</p>
+                                    <p id="last-tx-n" class="text-right explorer-info-text font-weight-bold"><%= nTransactions %></p>
+                                </div>
+                                <div class="col-6">
+                                    <p class="explorer-p">Latest block</p>
+                                    <% if(blocksInfo.length > 0) { %>
+                                        <p><a id="last-block-h" class="explorer-info-text" href="explorer/block/<%=blocksInfo[0].id - 1 %>"><%= blocksInfo[0].hash.substr(0, 17) + '…' %></a></p>
+                                    <% }else{ %>
+                                        <p><a id="last-block-h" class="explorer-info-text font-weight-bold">N/A</a></p>
+                                    <% } %>    
+                                </div>
+                                <div class="col-6">
+                                    <p class="explorer-p text-right">Latest transaction</p>
+                                    <% if(transactions.length > 0) { %>
+                                        <p class="text-right"><a id="last-tx-h" class="explorer-info-text" href="explorer/transaction/<%=transactions[0].id %>"><%= transactions[0].id.substr(0, 17) + '…' %></a></p>
+                                    <% }else{ %>
+                                        <p class="text-right"><a id="last-tx-h" class="explorer-info-text font-weight-bold">N/A</a></p>
+                                    <% } %>       
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 offset-0 offset-lg-1">
+                    <div class="explorer-index card">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <li class="nav-item">
+                                <a id="tx-chart-pill" class="nav-link active">Transaction</a>
+                                </li>
+                                <li class="nav-item">
+                                <a id="block-chart-pill" class="nav-link">Block</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <% include ../layouts/spiner %>
+                            <div id="tx-chart-container" class="d-none">
+                                <div class="canvas-wrapper">
+                                    <canvas class="main-chart" id="tx-chart" height="200" width="600"></canvas>
+                                </div>
+                            </div>
+                            <div id="block-chart-container" class="d-none">
+                                <div class="canvas-wrapper">
+                                    <canvas class="main-chart" id="block-chart" height="200" width="600"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-5">
+                    <div class="explorer-index card">
+                        <div class="card-header">
+                            <span class="custom-card-title"><i id="block-tag" class="fas fa-cubes" aria-hidden="true"></i> Blocks</span>
+                        </div>
+                        <div id="block-list" class="explorer-list">
+                            <ul id="block-ul" class="list-group list-group-flush d-flex">
+                                <% blocksInfo.forEach(function(block)  { %>
+                                    <li class="list-group-item align-items-center">
+                                        <div class="row h-100">
+                                            <div class="col-3 my-auto text-center block">
+                                                <p class="explorer-p"><a href="explorer/block/<%= block.id - 1 %>">Block <%= block.id - 1 %></a></p>
+                                            </div>
+                                            <div class="col-9 my-auto block-info">
+                                                <p class="p-word-break">Hash <a href="explorer/block/<%= block.id - 1 %>"><%= block.hash.substr(0, 22) + '…' %></a></p>
+                                                <p class="explorer-p">
+                                                    <% if(block.transactions.length > 0) { %>
+                                                        <a class="tx-btn" href="explorer/block/<%= (block.id - 1) %>/transactions">
+                                                    <% }else{ %>
+                                                        <a class="tx-btn a-disable">
+                                                    <% } %>    
+                                                        <%= block.transactions.length %> transactions
+                                                    </a> 
+                                                    in this block
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% }); %> 
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/explorer/blocks" class="btn btn-primary btn-sm btn-block">View all Blocks</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 offset-0 offset-lg-1">
+                    <div class="explorer-index card">
+                        <div class="card-header">
+                            <span class="custom-card-title"><i id="tx-tag" class="fa fa-list-alt" aria-hidden="true"></i> Transactions</span>
+                        </div>
+                        <div id="transactions-list" class="explorer-list">
+                            <ul id="transaction-ul" class="list-group list-group-flush d-flex">
+                                <% transactions.forEach(function(transaction)  { %>
+                                    <li class="list-group-item align-items-center">
+                                        <div class="row h-100">
+                                            <div class="col-2 my-auto text-center rounded-circle block">
+                                                <p class="explorer-p">Tx</p>
+                                            </div>
+                                            <div class="col-10 my-auto">
+                                                <p class="explorer-p">TX# <a href="/explorer/transaction/<%= transaction.id %>"><%= transaction.id.substr(0, 28) + '…' %></a></p>
+                                                <% if(transaction.imputsArgs.length > 0 && transaction.imputsArgs[0] == 'sendHash') { %>
+                                                    <p class="explorer-p">From <a href="explorer/address/<%= transaction.imputsArgs[1] %>"><%= transaction.imputsArgs[1].substr(0, 22) + '…' %></a> To <a href="explorer/address/<%= transaction.imputsArgs[2] %>"><%= transaction.imputsArgs[2].substr(0, 22) + '…' %></a></p>
+                                                    <p class="explorer-p">Message <span><%= transaction.imputsArgs[2].substr(0, 22) + '…' %></span></p>
+                                                <% }else if( transaction.imputsArgs.length > 0 && transaction.imputsArgs[0] ==  'sendRegister'){ %>
+                                                    <p class="explorer-p">From <a href="explorer/address/<%= transaction.imputsArgs[1] %>"><%= transaction.imputsArgs[1].substr(0, 22) + '…' %></a>  To <span class="font-weight-bold">N/A</span></p>
+                                                    <p class="explorer-p">Message <span class="font-weight-bold">N/A</span></p>
+                                                <% } else { %>
+                                                    <p class="explorer-p">From <span class="font-weight-bold">N/A</span> To <span class="font-weight-bold">N/A</span></p>
+                                                    <p class="explorer-p">Message <span class="font-weight-bold">N/A</span></p>
+                                                <% }%>
+                                            </div>
+                                        </div>
+                                    </li>
+                                <% }); %> 
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <a href="/explorer/transactions" class="btn btn-primary btn-sm btn-block">View all Transactions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include ../layouts/footer %>

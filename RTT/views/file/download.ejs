@@ -1,0 +1,42 @@
+<% include ../layouts/navigation-bar %>
+
+<main class="container general-container">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <% include ../layouts/wait %>
+            <% include ../layouts/flash-message %>
+            <div id="custom-search-input" class="custom-input">
+                <form id="form-download">
+                    <div class="input-group">
+                        <h6>Encrypted IPFS hash</h6>
+                        <input id="ipfs-hash" type="text" name="ipfsHash" class="search-query form-control" placeholder="Enter the encrypted IPFS hash value of electronic data" />
+                    </div>
+                    <div id="radio-button-input" class="margin-custom-radio">
+                        <h6>Whether the file is encrypted?</h6>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio1" name="encrypted" class="custom-control-input" value="true">
+                            <label class="custom-control-label" for="customRadio1">Yes</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio2" name="encrypted" class="custom-control-input" value="false">
+                            <label class="custom-control-label" for="customRadio2">No</label>
+                        </div>
+                    </div>
+                    <div id="secret-key-text-box" class="input-group margin-custom-radio d-none">
+                        <h6>Private Key</h6>
+                        <input id="secret-key" type="text" name="secretKey" class="search-query form-control" placeholder="Please fill in your private key" />
+                    </div>
+                    <button id="btn-find-image" class="btn btn-primary margin-custom-radio float-right" type="button"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                </form>
+            </div>                  
+            <div id="custom-search-image" class="d-none">
+                <div class="text-center">
+                    <img id="medical-image" src="images/file.png" class="med-image-preview img-thumbnail" id="medical-image-preview"/>
+                    <a id="btn-download" class="box-button btn btn-primary" href="" role="button" download="">Download</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include ../layouts/footer %>

@@ -1,0 +1,52 @@
+<% include ../layouts/navigation-bar %>
+
+<main class="container general-container">
+    <div class="row h-100">
+        <div class="col-12 my-auto">
+            <% include ./header %>
+            <div id="detail-container">
+                <h5 class="detail-title">Transaction</h5>
+                <p><small class="detail-number">For Block <%= blockId %></small></p>
+                <% include ../layouts/spiner %>
+                <div id="block-txs-table-container" class="d-none">
+                    <table id="block-txs-table" class="table hash-table dt-responsive detail-table" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>TxHash</th>
+                                <th>Block</th>
+                                <th>Timestamp</th>
+                                <th>From</th>
+                                <th></th>
+                                <th>To</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% transactions.forEach(function(transaction)  { %>
+                                <tr>
+                                    <td><%= transaction.id %></td>
+                                    <td><%= transaction.block - 1 %></td>
+                                    <td><%= new Date(parseInt(transaction.timestamp)).toUTCString() %></td>
+                                    <% if(transaction.imputsArgs.length > 0 && transaction.imputsArgs[0] == 'sendHash') { %>
+                                        <td><%=transaction.imputsArgs[1] %></td>
+                                        <td><i class="fas fa-arrow-right"></i></td>
+                                        <td><%=transaction.imputsArgs[2] %></td>
+                                    <% }else if (transaction.imputsArgs.length > 0 && transaction.imputsArgs[0] == 'sendRegister') { %>
+                                        <td><%=transaction.imputsArgs[1] %></td>
+                                        <td><i class="fas fa-arrow-right"></i></td>
+                                        <td>N/A</td>
+                                    <% }else{ %>
+                                        <td>N/A</td>
+                                        <td><i class="fas fa-arrow-right"></i></td>
+                                        <td>N/A</td>
+                                    <% } %>
+                                </tr>
+                            <% }); %>   
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<% include ../layouts/footer %>

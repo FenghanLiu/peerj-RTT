@@ -1,0 +1,261 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+  
+body {
+    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background: #fff;
+    font-size: 14px;
+    color: #444444;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.icon-color {
+    color: #7a7a7a;
+}
+
+.p-word-break { 
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}
+
+.alert {
+    margin-bottom: 25px;
+}
+
+.blue-word {
+    color: #30a5ff; 
+}
+
+.general-container {
+    min-height: 100%;
+}
+
+.image-src {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100px;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.alert-heading {
+    font-size: 14px;
+}
+
+.alert-text-message {
+    font-size: 12px;
+}
+
+/* INIT BUTTONS */
+.btn-primary {
+    font-size: 14px;
+    background:#30a5ff;
+}
+
+.btn-primary:hover {
+    background:#2d99ed;
+}
+/* END BUTTONS */
+
+
+/* INIT COPY */
+.js-copy {
+    margin-left: 15px; 
+}
+
+.js-copy:hover {
+    cursor: pointer;
+}
+/* END COPY */
+
+
+/* INIT ERROR */
+.tag-check {
+    color: #26cc3f !important;
+}
+
+.tag-error {
+    color: #ff305c !important;
+}
+.box-error {
+    border-color: #ff305c !important;
+}
+/* END ERROR */
+
+
+/* INIT RADIO BUTTONS */
+.margin-custom-radio {
+    margin-top: 30px;
+}
+
+.custom-radio .custom-control-input:checked~.custom-control-label::before,
+.custom-radio .custom-control-input:checked~.custom-control-label::after {
+    background-color: #30a5ff; 
+    border-radius: 50%;
+}
+/* END RADIO BUTTONS */
+
+/* INIT INPUT */
+.custom-input {
+    margin:0;
+    padding: 0;
+}
+
+.custom-input .search-query {
+    width:100%;
+    padding-right: 3px;
+    padding-left: 15px;
+    margin-bottom: 0;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 0;
+}
+
+.custom-input .button-search {
+    border: 0;
+    background:  rgba(52,152,219,.1);
+    position: absolute;
+    right:0;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-bottom: 0;
+    height: 100%;
+    color:#30a5ff;
+    z-index: 2;
+}
+
+.custom-input .button-search:hover {
+    cursor: pointer;
+}
+
+.search-query:focus{
+    z-index: 0;   
+}
+
+.profile-img-container{
+    position: relative;
+    text-align: center; 
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+    border: 3px solid #7a7a7a;
+    color: #fff;
+    border-radius: 50%;
+    margin: 5px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    cursor: pointer;
+}
+
+.profile-img:hover {
+    border-color: #30a5ff; 
+}
+
+.profile-img input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%; 
+}
+
+.profile-img-src {
+    width: 100%;
+}
+
+.hidden-element-container {
+    position: relative;
+    text-align: center; 
+}
+
+.hidden-element {
+    width: 80px;
+    height: 80px;
+    font-size: 20px;
+    background-color: #fff;
+    border: 3px solid #7a7a7a;
+    color: #7a7a7a;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+    cursor: pointer;
+}
+
+.hidden-element-icon {
+    margin-top: 27px;
+}
+
+.hidden-element:hover {
+    border-color: #30a5ff;
+    color: #30a5ff;
+}
+
+.hidden-element [type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.hidden-element [type=radio]:checked + i {
+    color: #30a5ff;
+}
+
+.hidden-element-active {
+    border-color: #30a5ff;
+}
+/* END INPUT */
+
+@media (max-width: 768px) {
+    .alert-heading {
+        font-size: 12px;
+    }
+
+    .alert-text-message {
+        font-size: 10px !important;
+    }
+    
+    .home-title, .guide-title {
+        font-size: 16px;
+    }
+
+    .search-query, .alert {
+        font-size: 12px;
+    }
+
+    .btn-primary {
+        font-size: 12px !important;
+    }
+
+    .hidden-element {
+        width: 60px;
+        height: 60px;
+        font-size: 18px;
+        border: 2px solid #7a7a7a;
+    }
+    
+    .hidden-element-icon {
+        margin-top: 20px;
+    }
+
+    .hidden-element-active {
+        border: 2px solid #30a5ff;
+    }
+}

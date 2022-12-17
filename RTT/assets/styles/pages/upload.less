@@ -1,0 +1,37 @@
+.upload-drop-zone {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    border-width: 1px;
+    color: rgba(0,0,0,.5);
+    border-style: dashed;
+    border-color: #ced4da;
+}
+
+.box-file, .box-file::-webkit-file-upload-button {
+    height: 0px !important;
+    width: 0px !important;
+}
+
+.upload-drop-zone.is-dragover {
+    color: #444444;
+    box-shadow: 0 0 10px #719ECE;
+}
+  
+.box-dragndrop {
+    display: none;
+}
+  
+.upload-drop-zone.has-advanced-upload .box-dragndrop {
+    display: inline;
+}
+
+#image-hash-box {
+    font-size: 18px;
+}
+
+@media (max-width: 768px) {
+    .upload-drop-zone {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+}
