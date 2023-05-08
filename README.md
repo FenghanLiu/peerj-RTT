@@ -41,14 +41,49 @@ Project website: https://www.hyperledger.org/projects/fabric
 ### Running the project
 
 - Initiating network deployment chain code
+
   Start Network
+  
+  Install the chain code: copy the chain code into the peer node This is executed in the project directory
+  
+  Install the chain code on the peer node
+  
+  Instantiate the chain code on the peer node
 
 ```
 ./byfn.sh up
+```
+  
+ ```
+docker cp -a PTTChaincodes/ cli:/opt/gopath/src/github.com/hyperledger/fabric/peer
 
+docker exec -it cli peer chaincode install -l "node" -n airmed -p /opt/gopath/src/github.com/hyperledger/fabric/peer/PTTChaincodes/chaincode -v v1
+
+docker exec -it cli peer chaincode instantiate -C mychannel -l "node" -n airmed -v v1 -c '{"Args":[]}' -o orderer.example.com:7050 --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+```
+- Start Datastore
+  
+```
+docker-compose up
 ```
 
+- The command to empty the original database containes
 
+```
+docker-compose down -v
+```
+
+- Start ipfs
+
+```
+ipfs daemon &
+```
+
+- Run the  process
+
+```
+./init.sh
+```
 
 
 
