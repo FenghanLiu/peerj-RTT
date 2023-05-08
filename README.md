@@ -22,12 +22,12 @@ We have provided download packages for IPFS and NVM in the installation tools fo
 
 **Docker and Docker Compose**
 
-Project website: https://docs.docker.com/install/linux/docker-ce/ubuntu/ (Docker)
+Project website: https://docs.docker.com/install/linux/docker-ce/ubuntu/ (Docker)\
 Project website: https://docs.docker.com/compose/install/ (Docker Compose)
 
 **Node.js, NPM**
 
-Project website: https://nodejs.org/en/ (Node.js)
+Project website: https://nodejs.org/en/ (Node.js)\
 Project website: https://www.npmjs.com/ (NPM)
 
 
