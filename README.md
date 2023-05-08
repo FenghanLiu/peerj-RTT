@@ -36,10 +36,17 @@ Project website: https://www.npmjs.com/ (NPM)\
 
 Project website: https://www.hyperledger.org/projects/fabric
 
-The version of Hyperledger Fabric used is 1.4.0
+（The version of Hyperledger Fabric used is 1.4.0）
 
+### Running the project
 
+- Initiating network deployment chain code
+  Start Network
 
+```
+./byfn.sh up
+
+```
 
 
 
