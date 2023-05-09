@@ -85,7 +85,11 @@ ipfs daemon &
 ./init.sh
 ```
 
-
+- Test tools
+  
+  Tape Installation and Deployment: https://github.com/Hyperledger-TWGC/tape
+  Caliper Installation and Deployment: https://hyperledger.github.io/caliper/v0.5.0/fabric-tutorial/tutorials-fabric-existing/
+  
 
 
 
